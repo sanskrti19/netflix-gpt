@@ -1,4 +1,4 @@
-// src/hooks/usePopularMovies.js
+ 
 
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constant";

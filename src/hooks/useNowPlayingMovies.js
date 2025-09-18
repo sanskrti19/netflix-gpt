@@ -1,7 +1,7 @@
-// In src/hooks/useNowPlayingMovies.js
+
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constant";
-// FIX: Change 'addNowPlayingMovies' to 'addNowPlayingMovie'
+ 
 import { addNowPlayingMovie } from "../utils/movieSlice"; 
 import { useEffect } from "react";
 

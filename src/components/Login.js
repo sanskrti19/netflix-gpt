@@ -6,13 +6,13 @@ import { auth } from "../utils/firebase";
 import {useDispatch} from "react-redux" 
 import React from 'react';
 import {addUser} from "../utils/userSlice"
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';  
 import { BGIMG, PROFILEURL } from '../utils/constant';
 
 const Login = () => {
     const [isSignInForm, setSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();  
     
     const dispatch=useDispatch();
     const name=useRef(null);
@@ -25,7 +25,7 @@ const Login = () => {
         if (message) return;
         
         if (!isSignInForm) {
-            // Sign Up
+            
             createUserWithEmailAndPassword(
                 auth, 
                 email.current.value,
@@ -49,7 +49,7 @@ const Login = () => {
                         })
                     )
                     
-                    navigate("/browse"); // Navigation for Sign Up
+                    navigate("/browse"); 
                 }).catch((error)=>{
                     setErrorMessage(error.message)
                 });
@@ -62,11 +62,11 @@ const Login = () => {
                 
             });
         } else {
-            // Sign In logic 
+            
             signInWithEmailAndPassword(auth,email.current.value,password.current.value).then((userCredential)=>{
-                //signed in
+               
                 const user=userCredential.user;
-                navigate("/browse"); // Navigation for Sign In
+                navigate("/browse"); 
                 
             })
             .catch((error)=>{

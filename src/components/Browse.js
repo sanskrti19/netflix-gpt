@@ -9,7 +9,7 @@ import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
 
 const Browse = () => {
-    // Call both hooks to fetch the data
+     
     useNowPlayingMovies();
     usePopularMovies();
     useTopRatedMovies();
