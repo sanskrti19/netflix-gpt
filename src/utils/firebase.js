@@ -9,7 +9,7 @@ import{getAuth,createUserWithEmailAndPassword} from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBJsuTv1625hokMB-EO7l_ZaPv6KIiRlyw",
+  apiKey: " ",
   authDomain: "netflixgpt-5f154.firebaseapp.com",
   projectId: "netflixgpt-5f154",
   storageBucket: "netflixgpt-5f154.firebasestorage.app",
