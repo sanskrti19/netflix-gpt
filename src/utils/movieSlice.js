@@ -9,9 +9,14 @@ import { createSlice
     reducers:{
         addNowPlayingMovie:(state,action)=>{
             state.nowPlayingMovies=action.payload;
+        },
+        addTrailerVideos: (state,action)=>{
+            state.trailerVideo =action.payload;
+
+
         }
     }
  })
- export const {addNowPlayingMovie}=movieSlice.actions;
+ export const {addNowPlayingMovie,addTrailerVideos}=movieSlice.actions;
 
  export default movieSlice.reducer;

@@ -16,7 +16,7 @@ const Browse = () => {
       <Header />
       <MainContainer/>
       <SecondaryContainer/>
-      <h1 className="text-black text-3xl">Welcome to the Browse Page</h1>
+      <h1 className="text-black text-3xl"> </h1>
     </div>
   );
 };
