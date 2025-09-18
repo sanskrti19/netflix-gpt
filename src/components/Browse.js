@@ -1,24 +1,28 @@
-import React from 'react';
- 
-//import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
-import Header from './Header';
- import useNowPlayingMovies from '../hooks/useNowPlayingMovies.js';
-import MainContainer from './MainContainer.js';
-import SecondaryContainer from './SecondaryContainer.js';
 
+import React from 'react';
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
+import usePopularMovies from '../hooks/usePopularMovies';
+import useTopRatedMovies from '../hooks/useTopRatedMovies';
+import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import Header from './Header';
+import MainContainer from './MainContainer';
+import SecondaryContainer from './SecondaryContainer';
 
 const Browse = () => {
-  useNowPlayingMovies();
+    // Call both hooks to fetch the data
+    useNowPlayingMovies();
+    usePopularMovies();
+    useTopRatedMovies();
+    useUpcomingMovies();
 
- 
-  return (
-    <div>
-      <Header />
-      <MainContainer/>
-      <SecondaryContainer/>
-      <h1 className="text-black text-3xl"> </h1>
-    </div>
-  );
+    return (
+        <div>
+            <Header />
+            <MainContainer />
+            <SecondaryContainer />
+            <h1 className="text-black text-3xl"> </h1>
+        </div>
+    );
 };
 
 export default Browse;

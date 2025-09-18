@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+// App.js
+import React, { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from './utils/firebase';
 import { addUser, removeUser } from './utils/userSlice';
-
 import Login from './components/Login';
 import Browse from './components/Browse';
 
 const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const [loading, setLoading] = useState(true);  
 
-  // Listen to Firebase auth changes only ONCE
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -21,16 +21,19 @@ const App = () => {
       } else {
         dispatch(removeUser());
       }
+      setLoading(false);  
     });
-
     return () => unsubscribe();
   }, [dispatch]);
 
-  // Define routes inline, with simple protection
-  const appRouter = createBrowserRouter([
+   if (loading) {
+    return <div className="loading-state">Loading...</div>; 
+  }
+
+   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Login />
+      element: user ? <Navigate to="/browse" /> : <Login />
     },
     {
       path: "/browse",
