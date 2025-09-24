@@ -1,13 +1,13 @@
+
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constant";
-import { addTrailerVideos } from "../utils/movieSlice";
+ import { addMovieTrailer } from "../utils/movieSlice"; 
 import { useEffect } from "react";
 
 const useMovieTrailer = (movieId) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const getMovieVideo = async () => {
-        // Add a check to prevent fetching if movieId is invalid
         if (!movieId) return;
 
         const data = await fetch(
@@ -15,17 +15,15 @@ const useMovieTrailer = (movieId) => {
             API_OPTIONS
         );
         const json = await data.json();
-
         if (json.results) {
-            const filterData = json.results.filter((video) => video.type === "Trailer");
-            const trailer = filterData.length ? filterData[0] : json.results[0];
-            dispatch(addTrailerVideos(trailer));
+            const trailer = json.results.find(video => video.type === "Trailer") || json.results[0];
+             dispatch(addMovieTrailer({ movieId, trailer })); 
         }
     };
 
-    useEffect(() => {
+    useEffect(() => {
         getMovieVideo();
-    }, [movieId]); // Add movieId to the dependency array
+    }, [movieId]);
 };
 
 export default useMovieTrailer;

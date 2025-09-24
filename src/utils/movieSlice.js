@@ -1,29 +1,35 @@
-import { createSlice
- } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
- const movieSlice=createSlice({
-    name:"movies",
-    initialState:{
-        nowPlayingMovies:null,
+const movieSlice = createSlice({
+    name: "movies",
+    initialState: {
+        nowPlayingMovies: null,
+        popularMovies: null,
+        topRatedMovies: null, 
+        upcomingMovies: null, 
+        trailerVideos: {},
     },
-    reducers:{
-        addNowPlayingMovie:(state,action)=>{
-            state.nowPlayingMovies=action.payload;
+    reducers: {
+        addNowPlayingMovies: (state, action) => {
+            state.nowPlayingMovies = action.payload;
         },
-        addPopularMovie:(state,action)=>{
-            state.popularMovies=action.payload;
+        addPopularMovie: (state, action) => {
+            state.popularMovies = action.payload;
         },
-         addTopRatedMovie:(state,action)=>{
-            state.topRatedMovies=action.payload;
+        addTopRatedMovies: (state, action) => { 
+            state.topRatedMovies = action.payload;
         },
-        addTrailerVideos: (state,action)=>{
-            state.trailerVideo =action.payload;
+        addUpcomingMovies: (state, action) => { 
+            state.upcomingMovies = action.payload;
         },
-        addUpcomingMovie:(state,action)=>{
-            state.upcomingMovies=action.payload;
+        addMovieTrailer: (state, action) => {
+            const { movieId, trailer } = action.payload;
+            state.trailerVideos[movieId] = trailer;
         },
-    }
- })
- export const {addNowPlayingMovie,addTrailerVideos,addPopularMovie,addTopRatedMovie,addUpcomingMovie}=movieSlice.actions;
+    },
+});
 
- export default movieSlice.reducer;
+
+export const { addNowPlayingMovies, addPopularMovie, addTopRatedMovies, addUpcomingMovies, addMovieTrailer } = movieSlice.actions;
+
+export default movieSlice.reducer;

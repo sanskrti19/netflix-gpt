@@ -2,7 +2,7 @@
 
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constant";
-import { addUpcomingMovie } from "../utils/movieSlice";
+import { addUpcomingMovies } from '../utils/movieSlice';
 import { useEffect } from "react";
 
 const useUpcomingMovies = () => {
@@ -13,7 +13,7 @@ const useUpcomingMovies = () => {
             API_OPTIONS
         );
         const json = await data.json();
-        dispatch(addUpcomingMovie(json.results));
+        dispatch(addUpcomingMovies(json.results));
     };
 
     useEffect(() => {

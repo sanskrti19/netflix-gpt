@@ -1,7 +1,6 @@
-// MovieCardWithHover.js
+ 
 import React, { useState } from 'react';
-import useMovieTrailer from '../hooks/useMovieTrailer';
-
+import useMovieTrailer from '../hooks/UseMovieTrailer';
 const MovieCardWithHover = ({ movieId, posterPath }) => {
   const [isHovered, setIsHovered] = useState(false);
   const trailerVideo = useMovieTrailer(movieId, isHovered); // Pass isHovered to your hook
@@ -12,9 +11,9 @@ const MovieCardWithHover = ({ movieId, posterPath }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* ... (image element from above) */}
+     
       
-      {/* Conditionally render the video player */}
+  
       {isHovered && trailerVideo && (
         <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <iframe
