@@ -7,8 +7,9 @@ import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import Header from './Header';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
-import GptSearch from "./gptSearch"
+
 import { useSelector } from 'react-redux';
+import GptSearch from './gptSearch';
 
 const Browse = () => {
     const showGptSearch=useSelector(store=> store.gpt.showGptSearch)

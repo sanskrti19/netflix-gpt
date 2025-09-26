@@ -2,25 +2,20 @@
 
 import React, { useState } from 'react';
 import { IMG_CDN_URL } from "../utils/constant";
-import useMovieTrailer from '../hooks/UseMovieTrailer';
-import { useSelector } from 'react-redux';
+ 
+ 
 
 const MovieCard = ({ movieId, posterPath }) => {
-    const [isHovered, setIsHovered] = useState(false);
-
-     
-    useMovieTrailer(movieId); 
+    const [isHovered,setIsHovered]=useState(false);
 
    
-    const trailerVideo = useSelector(store => store.movies.trailerVideos[movieId]);
 
     if (!posterPath) return null;
 
     return (
         <div 
             className="relative w-48 pr-4 group"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+             
         >
             <img
                 alt="movie poster"
@@ -28,7 +23,7 @@ const MovieCard = ({ movieId, posterPath }) => {
                 className={`w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
             />
             
-            {isHovered && trailerVideo && (
+            {/* { trailerVideo && (
                 <div className="absolute inset-0 z-10">
                     <iframe
                         className="w-full h-full"
@@ -38,7 +33,7 @@ const MovieCard = ({ movieId, posterPath }) => {
                         allowFullScreen
                     ></iframe>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };
