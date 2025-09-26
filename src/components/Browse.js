@@ -7,6 +7,7 @@ import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import Header from './Header';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
+import GPTSearch from './GPTSearch';
 
 const Browse = () => {
      
@@ -20,6 +21,7 @@ const Browse = () => {
             <Header />
             <MainContainer />
             <SecondaryContainer />
+            <GPTSearch/>
             <h1 className="text-black text-3xl"> </h1>
         </div>
     );
