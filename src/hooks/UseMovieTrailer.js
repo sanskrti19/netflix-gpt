@@ -1,19 +1,29 @@
-import React from 'react';
-import { IMG_CDN_URL } from "../utils/constant";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+ import { addTrailerVideo } from "../utils/movieSlice";
+ 
+import { API_OPTIONS } from "../utils/constant";
+const useMovieTrailer = (movieId) => {
+  const dispatch = useDispatch();
 
-const MovieCard = ({ posterPath }) => {
-    // The MovieCard component only needs the poster path.
-    // Trailer logic and fetching is handled elsewhere.
-    if (!posterPath) return null;
+  const trailerVideo = useSelector((store) => store.movies.trailerVideo);
 
-    return (
-        <div className="w-48 pr-4">
-            <img
-                alt="movie poster"
-                src={IMG_CDN_URL + posterPath}
-            />
-        </div>
+  const getMovieVideos = async () => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/movie/" +
+        movieId +
+        "/videos?language=en-US",
+      API_OPTIONS
     );
+    const json = await data.json();
+
+    const filterData = json.results.filter((video) => video.type === "Trailer");
+    const trailer = filterData.length ? filterData[0] : json.results[0];
+    dispatch(addTrailerVideo(trailer));
+  };
+  useEffect(() => {
+    !trailerVideo && getMovieVideos();
+  }, []);
 };
 
-export default MovieCard;
+export default useMovieTrailer;

@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import usePopularMovies from '../hooks/usePopularMovies';

@@ -1,35 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const movieSlice = createSlice({
-    name: "movies",
-    initialState: {
-        nowPlayingMovies: null,
-        popularMovies: null,
-        topRatedMovies: null, 
-        upcomingMovies: null, 
-        trailerVideos: {},
+const moviesSlice = createSlice({
+  name: "movies",
+  initialState: {
+    nowPlayingMovies: null,
+    popularMovies: null,
+    trailerVideo: null,
+  },
+  reducers: {
+    addNowPlayingMovies: (state, action) => {
+      state.nowPlayingMovies = action.payload;
     },
-    reducers: {
-        addNowPlayingMovies: (state, action) => {
-            state.nowPlayingMovies = action.payload;
-        },
-        addPopularMovie: (state, action) => {
-            state.popularMovies = action.payload;
-        },
-        addTopRatedMovies: (state, action) => { 
-            state.topRatedMovies = action.payload;
-        },
-        addUpcomingMovies: (state, action) => { 
-            state.upcomingMovies = action.payload;
-        },
-        addMovieTrailer: (state, action) => {
-            const { movieId, trailer } = action.payload;
-            state.trailerVideos[movieId] = trailer;
-        },
+    addPopularMovies: (state, action) => {
+      state.popularMovies = action.payload;
     },
+    addTrailerVideo: (state, action) => {
+      state.trailerVideo = action.payload;
+    },
+    addUpcomingMovies: (state, action) => {
+      state.upcomingMovies = action.payload;
+    },
+    addTopRatedMovies: (state, action) => {
+      state.topRatedMovies = action.payload;
+    },
+    
+  },
 });
 
+export const { addNowPlayingMovies, addTrailerVideo, addPopularMovies, addTopRatedMovies , addUpcomingMovies} =
+  moviesSlice.actions;
 
-export const { addNowPlayingMovies, addPopularMovie, addTopRatedMovies, addUpcomingMovies, addMovieTrailer } = movieSlice.actions;
-
-export default movieSlice.reducer;
+export default moviesSlice.reducer;

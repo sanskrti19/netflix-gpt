@@ -1,22 +1,17 @@
-import React from 'react';
-import MovieCard from './MovieCard';
+import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
-  if (!movies) return null;
-
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-white mb-4">{title}</h1>
-      <div className="flex overflow-x-scroll no-scrollbar">
+    <div className="px-6 ">
+      <h1 className="text-lg md:text-3xl py-4 text-white">{title}</h1>
+      <div className="flex overflow-x-scroll">
         <div className="flex">
-          {movies.map((movie) => (
-             
-            <MovieCard key={movie.id} movieId={movie.id} posterPath={movie.poster_path} />
+          {movies?.map((movie) => (
+            <MovieCard key={movie.id} posterPath={movie.poster_path} />
           ))}
         </div>
       </div>
     </div>
   );
 };
-
 export default MovieList;

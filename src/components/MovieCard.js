@@ -1,41 +1,10 @@
- 
-
-import React, { useState } from 'react';
-import { IMG_CDN_URL } from "../utils/constant";
- 
- 
-
-const MovieCard = ({ movieId, posterPath }) => {
-    const [isHovered,setIsHovered]=useState(false);
-
-   
-
-    if (!posterPath) return null;
-
-    return (
-        <div 
-            className="relative w-48 pr-4 group"
-             
-        >
-            <img
-                alt="movie poster"
-                src={IMG_CDN_URL + posterPath}
-                className={`w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
-            />
-            
-            {/* { trailerVideo && (
-                <div className="absolute inset-0 z-10">
-                    <iframe
-                        className="w-full h-full"
-                        src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&mute=1&controls=0`}
-                        title="Movie trailer"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                    ></iframe>
-                </div>
-            )} */}
-        </div>
-    );
+import {IMG_CDN_URL} from "../utils/constant"
+const MovieCard = ({ posterPath }) => {
+  if (!posterPath) return null;
+  return (
+    <div className="w-36 md:w-48 pr-4">
+      <img alt="Movie Card" src={IMG_CDN_URL + posterPath} />
+    </div>
+  );
 };
-
 export default MovieCard;

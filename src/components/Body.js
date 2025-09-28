@@ -1,21 +1,18 @@
-import React, { useEffect } from 'react';
+import { createBrowserRouter } from "react-router-dom";
+import Browse from "./Browse";
+import Login from "./Login";
+import { RouterProvider } from "react-router-dom";
 
-import Login from './Login';
-import Browse from './Browse';
-import { createBrowserRouter } from 'react-router-dom';
-import { RouterProvider } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 const Body = () => {
-  const user = useSelector((store) => store.user);
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Login />
+      element: <Login />,
     },
     {
       path: "/browse",
-      element: <Browse />
-    }
+      element: <Browse />,
+    },
   ]);
 
   return (
@@ -24,5 +21,4 @@ const Body = () => {
     </div>
   );
 };
-
 export default Body;
