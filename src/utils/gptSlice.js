@@ -13,4 +13,4 @@ const gptSlice = createSlice({
 });
 
 export const { toggleGptSearchView } = gptSlice.actions;
-export default gptSlice.reducer; // <-- It's best practice to export the reducer function
+export default gptSlice.reducer;  
