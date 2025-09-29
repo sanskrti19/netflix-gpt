@@ -85,11 +85,11 @@ const Login = () => {
         <div>
         <Header />
         
-        <div className="absolute w-full h-full -z-10">
-        <img
+        <div className="fixed  inser-0-z-10">
+        <img  
         src= {BGIMG}
         alt="bg-img"
-        className="w-full h-full object-cover"
+        className="h-full w-full object-cover"
         />
         </div>
         
@@ -132,7 +132,8 @@ const Login = () => {
         {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         
-        <p className="py-4 cursor-pointer" onClick={toggleSigninForm}>
+        <p className="py-4 cursor-pointer" 
+        onClick={toggleSigninForm}>
         {isSignInForm
             ? "New to Netflix? Sign Up now!"
             : "Already a member? Sign In now"}
