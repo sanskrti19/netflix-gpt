@@ -10,7 +10,7 @@ export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: process.env.REACT_APP_TMD_KEY
+    Authorization:"Bearer"+  process.env.REACT_APP_TMD_KEY,
   }  
 }; 
 
@@ -21,3 +21,5 @@ export const SUPPORTED_LANGUAGE=[
  {identifier:"hindi", name:"Hindi"},
  {identifier:"spanish", name:"Spanish"}
 ]
+
+export const OPENAI_KEY=process.env.REACT_APP_OPENAI_KEY;
